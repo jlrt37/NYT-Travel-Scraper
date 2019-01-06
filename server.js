@@ -18,7 +18,7 @@ app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsScraper";
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {
