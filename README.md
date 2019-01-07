@@ -5,4 +5,4 @@ The app uses mongoose, axios, cheerio. Handlebars could have been used, but I fe
 
 The Screenshots provided show the deployed app on Heroku. 
 
-Once the app is completely running, the user should be able to scrape the website and select articles they 
+Once the app is completely running, the user should be able to scrape the website and select articles they would like to save and comment on.
