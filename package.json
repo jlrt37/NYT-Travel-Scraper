@@ -24,7 +24,9 @@
     "express-handlebars": "^3.0.0",
     "mongoose": "^5.4.2",
     "morgan": "^1.9.1",
+    "node": "^11.6.0",
     "path": "^0.12.7",
+    "port": "^0.8.1",
     "request": "^2.88.0"
   }
 }
