@@ -35,28 +35,27 @@ app.get("/scrape", function(req, res) {
     var $ = cheerio.load(response.data);
 
         let counter = 0;
-    $("a.story-link").each(function(i, element) {
-      var result = {};
-      
-      var storyDiv = $(this).children("div.story-body")
-      result.url = storyDiv.children("a").attr("href")
-      var metaDiv = storyDiv.children("a").children("div.story-meta")
-      result.headline = metaDiv.children("h2").text()
-      result.summary = metaDiv.children("p.summary").text();
-
-     if (result.headline && result.url){
-
-      db.Article.create(result)
-        .then(function(dbArticle) {
-          console.log(dbArticle);
-          counter++;
-          console.log("added " + counter + " new items")
-        })
-        .catch(function(err) {
-          return res.json(err);
+        app.get("/scrape", function (req, res) {
+  
+          axios.get("https://www.nytimes.com/section/travel").then(function (response) {
+            var $ = cheerio.load(response.data);
+           
+            $("a.story-link").each(function (i, element) {
+              var result = {};
+              result.link = $(this).attr("href");
+              result.title = $(this).find("h2.headline").text();
+              result.summary = $(this).find("p.summary").text();
+              db.Article.create(result)
+                .then(function (dbArticle) {
+                  console.log(dbArticle);
+                })
+                .catch(function (err) {
+                  console.log(err);
+                });
+            });
+            res.send("Scrape Complete");
+          });
         });
-      }
-    });
 
     res.sendFile(path.join(__dirname, "public/index.html"));
   });
