@@ -103,7 +103,7 @@ $(document).ready(function(){
 
       displayArticles()
 
-      $("#scrapeModalLabel").text("Articles Scraped")
+      $("#scrapeModalLabel").text("Articles were scraped")
 
       $("#scrapeModal").modal("show");
 
